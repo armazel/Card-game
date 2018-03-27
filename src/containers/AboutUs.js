@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux'
 import {Link} from 'react-router-dom'
 import {BlurButton} from "./styled/buttons";
 
-class Home extends Component {
+class AboutUs extends Component {
 
     mapDispatchToProps = dispatch => bindActionCreators({
         changePage: () => push('/about-us')
@@ -13,8 +13,7 @@ class Home extends Component {
     render() {
         return (
             <div>
-                <h1>Home</h1>
-                <p>Welcome home!</p>
+                <h1>About US</h1>
                 <Link to='/'>
                     <BlurButton width='10%' fontSize='24px' padding="10px">Назад</BlurButton>
                 </Link>
@@ -24,5 +23,5 @@ class Home extends Component {
     }
 }
 
-export default Home;
+export default AboutUs;
 
