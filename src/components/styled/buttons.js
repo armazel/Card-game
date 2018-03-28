@@ -11,6 +11,14 @@ export class LinkBlock extends React.Component {
     }
 }
 
+export class ButtonClick extends React.Component {
+
+    render() {
+        const { classType, iconType, fontSize, color, onClick} = this.props;
+        return <button onClick={onClick} className={this.props.className}><IconNode color={color} classType={classType} fontSize={fontSize} iconType={iconType}></IconNode></button>;
+    }
+}
+
 export const BlurRouteButton = style(LinkBlock).attrs({
     padding: props => props.padding || '20px',
     width:props => props.width || '100%'

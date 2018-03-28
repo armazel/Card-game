@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import { push } from 'react-router-redux'
 import { bindActionCreators } from 'redux'
 import {Link} from 'react-router-dom'
-import {BlurButton} from "./styled/buttons";
+import {BlurButton} from "../components/styled/buttons";
 
 class Home extends Component {
 

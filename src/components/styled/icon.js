@@ -15,10 +15,11 @@ class IconBlock extends React.Component {
 export const IconNode = style(IconBlock).attrs({
     marginLeft: props => props.marginLeft,
     marginRight: props => props.marginRight,
+    color: props => props.color || 'red'
 })`
 
 margin-left: ${props => props.marginLeft};
 margin-right: ${props => props.marginRight};
 font-size: ${props => props.fontSize};
-color: red;
+color: ${props=> props.color};
 `

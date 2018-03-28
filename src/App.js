@@ -4,8 +4,8 @@ import './App.css';
 import Home from './containers/Home'
 import Counter from './containers/Counter'
 import AboutUs from './containers/AboutUs'
-import {BlurRouteButton} from './containers/styled/buttons'
-import {AppContainer} from "./containers/styled/appBlock";
+import {BlurRouteButton} from './components/styled/buttons'
+import {AppContainer} from "./components/styled/appBlock";
 import 'material-design-icons';
 
 
