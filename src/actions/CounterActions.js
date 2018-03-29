@@ -1,4 +1,5 @@
 import actionsType from './'
+import {getSometing} from '../api/getIfos'
 
 export function addCounter() {
     return {
@@ -11,3 +12,11 @@ export function removeCounter() {
         type: actionsType.COUNTER_REMOVE,
     };
 }
+
+export function updateCounter(value) {
+    return {
+        type: actionsType.UPDATE_COUNTER,
+        payload:{value:value}
+    };
+}
+

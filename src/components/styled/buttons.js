@@ -6,8 +6,8 @@ import {IconNode} from "./icon";
 export class LinkBlock extends React.Component {
 
     render() {
-        const { to,description,classType, iconType, fontSize } = this.props;
-        return <Link className={this.props.className} to={to}><IconNode classType={classType} fontSize={fontSize} iconType={iconType}></IconNode>{description}</Link>;
+        const { to,description,classType, iconType, fontSize, onClick } = this.props;
+        return <Link onClick={onClick} className={this.props.className} to={to}><IconNode classType={classType} fontSize={fontSize} iconType={iconType}></IconNode>{description}</Link>;
     }
 }
 

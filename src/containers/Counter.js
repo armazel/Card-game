@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import {WrapperContainer} from "../components/styled/appBlock";
 import {CounterContainer,CounterButton, CounterText} from "../components/styled/counterPage";
+import {InputData,InputDataBlock} from "../components/styled/inputs";
+import {IconNode} from "../components/styled/icon";
 import {Header} from "../components/styled/titleHeaders";
 import 'material-design-icons';
 import { connect } from 'react-redux'
@@ -25,6 +27,15 @@ const mapDispatchToProps = (dispatch) => {
 
 class Counter extends Component {
 
+    constructor(props){
+        super(props);
+        this.onCounterUpdate = this.onCounterUpdate.bind(this);
+
+        this.state = {
+            counterValue: ''
+        };
+    }
+
     componentDidMount() {
 
     }
@@ -40,6 +51,14 @@ class Counter extends Component {
     onCounterRemoveClick() {
         this.props.counterActions.removeCounter()
     }
+    onCounterUpdate(event){
+
+        this.setState({counterValue :event.target.value})
+    }
+
+    onCounterGetData(){
+        this.props.counterActions.updateCounter(this.state.counterValue)
+    }
 
     render() {
         const { addCounter,removeCounter } = this.props.counterActions
@@ -49,8 +68,14 @@ class Counter extends Component {
                 <CounterContainer>
                     <Header>Counter</Header>
                     <CounterButton onClick={() => this.onCounterRemoveClick()} iconType="exposure_neg_1" color='white' classType="material-icons"></CounterButton>
-                    <CounterText width="20px">{counterInfo}</CounterText>
+                    <CounterText>{counterInfo}</CounterText>
                     <CounterButton onClick={() => this.onCounterAddClick()} iconType="exposure_plus_1" color='white' classType="material-icons"></CounterButton>
+
+                    <InputDataBlock>
+                            <InputData iconType="edit" classType="material-icons" onChange={(e) => this.onCounterUpdate(e)}></InputData>
+                        <CounterButton onClick={() => this.onCounterGetData(this.state.counterValue)} iconType="edit" color='white' classType="material-icons"></CounterButton>
+                    </InputDataBlock>
+
                 </CounterContainer>
             </WrapperContainer>
         );

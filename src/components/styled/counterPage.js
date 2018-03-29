@@ -23,19 +23,25 @@ export const CounterButton = style(ButtonClick).attrs({
   background: green;
   opacity: 0.7;
   transition: all 0.5s ease;
+  outline: none;
   &:hover{
     opacity: 1;
     cursor: pointer;
     color: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
   }
 `
 
 
 export const CounterText = style.p.attrs({
-    width: props => props.width || '10%',
+    width: props => props.width || '20px',
 })`
 color:${props => props.color};
 font-size: 18px;
+display: flex;
+justify-content: center;
+align-items: center;
 margin: 0 10px;
+width: ${props=> props.width};
 
 `
