@@ -34,7 +34,7 @@ export const CounterButton = style(ButtonClick).attrs({
 
 
 export const CounterText = style.p.attrs({
-    width: props => props.width || '20px',
+    width: props => props.width || '60px',
 })`
 color:${props => props.color};
 font-size: 18px;

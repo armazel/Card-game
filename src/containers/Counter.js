@@ -57,7 +57,7 @@ class Counter extends Component {
     }
 
     onCounterGetData(){
-        this.props.counterActions.updateCounter(this.state.counterValue)
+        this.props.counterActions.updateCounter(parseInt(this.state.counterValue))
     }
 
     render() {
