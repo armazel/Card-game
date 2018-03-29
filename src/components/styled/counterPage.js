@@ -24,6 +24,11 @@ export const CounterButton = style(ButtonClick).attrs({
   opacity: 0.7;
   transition: all 0.5s ease;
   outline: none;
+  color: white;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
   &:hover{
     opacity: 1;
     cursor: pointer;

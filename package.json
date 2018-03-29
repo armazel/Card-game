@@ -6,6 +6,7 @@
     "axios": "^0.18.0",
     "babel-eslint": "^8.2.2",
     "babel-polyfill": "^6.23.0",
+    "body-parser": "^1.18.2",
     "change-case": "^3.0.2",
     "eventsource-polyfill": "^0.9.6",
     "history": "^4.7.2",

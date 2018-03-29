@@ -14,8 +14,8 @@ export class LinkBlock extends React.Component {
 export class ButtonClick extends React.Component {
 
     render() {
-        const { classType, iconType, fontSize, color, onClick} = this.props;
-        return <button onClick={onClick} className={this.props.className}><IconNode color={color} classType={classType} fontSize={fontSize} iconType={iconType}></IconNode></button>;
+        const { classType, iconType, fontSize, color, onClick, description} = this.props;
+        return <button onClick={onClick} className={this.props.className}><IconNode color={color} classType={classType} fontSize={fontSize} iconType={iconType}></IconNode>{description}</button>;
     }
 }
 

@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import {WrapperContainer} from "../components/styled/appBlock";
 import {CounterContainer,CounterButton, CounterText} from "../components/styled/counterPage";
 import {InputData,InputDataBlock} from "../components/styled/inputs";
-import {IconNode} from "../components/styled/icon";
 import {Header} from "../components/styled/titleHeaders";
 import 'material-design-icons';
 import { connect } from 'react-redux'
@@ -36,14 +35,6 @@ class Counter extends Component {
         };
     }
 
-    componentDidMount() {
-
-    }
-
-    componentWillUnmount() {
-
-    }
-
     onCounterAddClick() {
         this.props.counterActions.addCounter()
     }
@@ -72,7 +63,7 @@ class Counter extends Component {
                     <CounterButton onClick={() => this.onCounterAddClick()} iconType="exposure_plus_1" color='white' classType="material-icons"></CounterButton>
 
                     <InputDataBlock>
-                            <InputData iconType="edit" classType="material-icons" onChange={(e) => this.onCounterUpdate(e)}></InputData>
+                            <InputData placeholder="Change count" iconType="edit" classType="material-icons" onChange={(e) => this.onCounterUpdate(e)}></InputData>
                         <CounterButton onClick={() => this.onCounterGetData(this.state.counterValue)} iconType="edit" color='white' classType="material-icons"></CounterButton>
                     </InputDataBlock>
 

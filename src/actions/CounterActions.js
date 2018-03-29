@@ -16,7 +16,9 @@ export function removeCounter() {
 export function updateCounter(value) {
     return {
         type: actionsType.UPDATE_COUNTER,
-        payload:{value:value}
+        payload:{
+            value: value
+        }
     };
 }
 

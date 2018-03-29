@@ -6,9 +6,9 @@ import {IconNode} from "./icon";
 class InputBlock extends React.Component{
 
     render(){
-        const{fontSize,value, className,onChange} = this.props;
+        const{fontSize,value, className,onChange, placeholder} = this.props;
         return (
-            <input onChange={onChange} className={className} type="text" fontSize={fontSize}  value={value}/>
+            <input placeholder={placeholder} onChange={onChange} className={className} type="text" fontSize={fontSize}  value={value}/>
         )
     }
 }
