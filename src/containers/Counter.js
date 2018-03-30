@@ -31,7 +31,7 @@ class Counter extends Component {
         this.onCounterUpdate = this.onCounterUpdate.bind(this);
 
         this.state = {
-            counterValue: ''
+            counterValue: 0
         };
     }
 
@@ -63,7 +63,7 @@ class Counter extends Component {
                     <CounterButton onClick={() => this.onCounterAddClick()} iconType="exposure_plus_1" color='white' classType="material-icons"></CounterButton>
 
                     <InputDataBlock>
-                            <InputData placeholder="Change count" iconType="edit" classType="material-icons" onChange={(e) => this.onCounterUpdate(e)}></InputData>
+                            <InputData value={this.state.counterValue} placeholder="Change count" iconType="edit" classType="material-icons" onChange={(e) => this.onCounterUpdate(e)}></InputData>
                         <CounterButton onClick={() => this.onCounterGetData(this.state.counterValue)} iconType="edit" color='white' classType="material-icons"></CounterButton>
                     </InputDataBlock>
 

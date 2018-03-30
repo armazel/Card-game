@@ -3,22 +3,33 @@ import { bindActionCreators } from 'redux'
 import {Link} from 'react-router-dom'
 import {BlurButton} from "../components/styled/buttons";
 import {CounterContainer,CounterButton, CounterText} from "../components/styled/counterPage";
+import {Header,List,ListItem} from "../components/styled/titleHeaders";
 import * as aboutUsActions from '../actions/aboutUsActions'
+import * as loaderActions from '../actions/loaderActions'
 import {connect} from "react-redux";
-import * as counterActions from "../actions/CounterActions";
+import { RingLoader } from 'react-spinners';
 
 
 const mapStateToProps = (state) => {
     return {
-        users: state.users.usersData
+        users: state.users.usersData,
+        loaderActive: state.loaders.activeLoaderFlag
     }
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        aboutUsActions: bindActionCreators(aboutUsActions, dispatch)
+        aboutUsActions: bindActionCreators(aboutUsActions, dispatch),
+        loadersActive: bindActionCreators(loaderActions, dispatch)
     }
 }
+
+const UsersList = ({ line,index }) => {
+    return (
+        line ?  <ListItem fontSize="18px"><span>{index + ') '}</span>{line.name + ' ' + line.surname + ' ' + line.age + ' лет(года) ' + '(' + line.role + ')'}</ListItem> : null
+    )
+}
+
 
 class AboutUs extends Component {
 
@@ -33,18 +44,19 @@ class AboutUs extends Component {
 
     componentWillReceiveProps(nextProps) {
         this.setState({
-            usersData: nextProps.users || null
+            //usersData: nextProps.users || null
         });
     }
 
     onGetUsers() {
+        this.props.loadersActive.activeLoaderToggle(true);
         this.props.aboutUsActions.getUsers()
     }
 
+
     render() {
 
-        const {usersData} = this.state;
-        const {users} = this.props;
+        const {users,loaderActive} = this.props;
         return (
             <div>
                 <h1>About US</h1>
@@ -53,14 +65,26 @@ class AboutUs extends Component {
                 </Link>
 
                 <CounterContainer>
-                    <CounterButton width="60px" description="Get users" onClick={() => this.onGetUsers()} iconType="person_add" color='white' classType="material-icons">
+                    <CounterButton width="60px" description="О нашей команде" onClick={() => this.onGetUsers()} iconType="person_add" color='white' classType="material-icons">
                     </CounterButton>
                     <CounterText width="100%">
-
+                        <RingLoader
+                            color={'rebeccapurple'}
+                            loading={loaderActive}
+                        />
+                        {
+                            !this.props.users ?
+                            <Header fontSize="20px">нет данных</Header> : null
+                        }
+                        <List>
+                            {
+                                this.props.users ?
+                                    users.map((line, i) => {
+                                        return line ? <UsersList index={i+1} line={line} key={i}/> : null;
+                                    }) : null
+                            }
+                        </List>
                     </CounterText>
-                    {
-                        usersData !== null ?  <p>{usersData.name + ' ' + usersData.surname + ' ' + usersData.age + ' года(лет)'}</p> : 'Нет данных'
-                    }
                 </CounterContainer>
             </div>
         );

@@ -10,4 +10,27 @@ export const Header = style.h1.attrs({
   width: 100%;
   display: flex;
   justify-content: center;
+  font-size: ${props=> props.fontSize}
+`
+
+
+export const List = style.ul.attrs({
+    padding:props => props.padding || '10px'
+})`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  
+`
+
+export  const ListItem = style.li.attrs({
+    fontSize:props => props.fontSize
+})`
+list-style-type: none;
+color: black;
+padding: 0 5px;
+display: flex;
+justify-content: center;
+width: 100%;
 `

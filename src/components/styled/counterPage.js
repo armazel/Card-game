@@ -38,12 +38,14 @@ export const CounterButton = style(ButtonClick).attrs({
 `
 
 
-export const CounterText = style.p.attrs({
+export const CounterText = style.span.attrs({
     width: props => props.width || '60px',
 })`
 color:${props => props.color};
 font-size: 18px;
 display: flex;
+flex-wrap: wrap;
+width: 100%;
 justify-content: center;
 align-items: center;
 margin: 0 10px;
