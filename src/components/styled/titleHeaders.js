@@ -15,12 +15,14 @@ export const Header = style.h1.attrs({
 
 
 export const List = style.ul.attrs({
-    padding:props => props.padding || '10px'
+    padding:props => props.padding || '10px',
+    width: props => props.width
 })`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  width:${props => props.width}
   
 `
 
