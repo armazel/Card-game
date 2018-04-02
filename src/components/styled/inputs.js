@@ -1,6 +1,5 @@
 import style from 'styled-components'
 import * as React from 'react'
-import {IconNode} from "./icon";
 
 
 class InputBlock extends React.Component{

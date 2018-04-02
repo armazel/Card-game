@@ -1,5 +1,5 @@
 import style from 'styled-components'
-import {BlurRouteButton,ButtonClick} from './buttons'
+import {ButtonClick} from './buttons'
 
 
 export const CounterContainer = style.div.attrs({
@@ -40,6 +40,8 @@ export const CounterButton = style(ButtonClick).attrs({
 
 export const CounterText = style.span.attrs({
     width: props => props.width || '60px',
+    padding: props => props.padding,
+    margin: props => props.margin
 })`
 color:${props => props.color};
 font-size: 18px;
@@ -48,7 +50,8 @@ flex-wrap: wrap;
 width: 100%;
 justify-content: center;
 align-items: center;
-margin: 0 10px;
+margin: ${props=> props.margin};
+padding: ${props => props.padding};
 width: ${props=> props.width};
 
 `

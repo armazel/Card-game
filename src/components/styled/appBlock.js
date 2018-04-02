@@ -15,9 +15,18 @@ export const AppContainer = style.div.attrs({
 
 
 export const  WrapperContainer = style.div.attrs({
-    width: props => props.width || '100%'
+    width: props => props.width || '100%',
+    padding: props => props.padding,
+    margin: props => props.margin
 }) `
     display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
     position: relative;
     top: 10px;
+    width: ${props => props.width};
+    margin: ${props=> props.margin};
+    padding: ${props => props.padding};
 `
+
+

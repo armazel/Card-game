@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux'
 import {Link} from 'react-router-dom'
 import {BlurButton} from "../components/styled/buttons";
 import {CounterContainer,CounterButton, CounterText} from "../components/styled/counterPage";
+import {WrapperContainer} from "../components/styled/appBlock";
 import {Header,List,ListItem} from "../components/styled/titleHeaders";
 import * as aboutUsActions from '../actions/aboutUsActions'
 import * as loaderActions from '../actions/loaderActions'
@@ -13,7 +14,7 @@ import { RingLoader } from 'react-spinners';
 const mapStateToProps = (state) => {
     return {
         users: state.users.usersData,
-        loaderActive: state.loaders.activeLoaderFlag
+        loaderActive: state.loaders.activeLoaderFlag || null
     }
 };
 
@@ -55,7 +56,6 @@ class AboutUs extends Component {
 
 
     render() {
-
         const {users,loaderActive} = this.props;
         return (
             <div>
@@ -67,13 +67,13 @@ class AboutUs extends Component {
                 <CounterContainer>
                     <CounterButton width="60px" description="О нашей команде" onClick={() => this.onGetUsers()} iconType="person_add" color='white' classType="material-icons">
                     </CounterButton>
-                    <CounterText width="100%">
+                    <WrapperContainer padding="10px" margin="10px" width="100%">
                         <RingLoader
                             color={'rebeccapurple'}
                             loading={loaderActive}
                         />
                         {
-                            !this.props.users ?
+                            !this.props.users && !loaderActive ?
                             <Header fontSize="20px">нет данных</Header> : null
                         }
                         <List>
@@ -84,7 +84,7 @@ class AboutUs extends Component {
                                     }) : null
                             }
                         </List>
-                    </CounterText>
+                    </WrapperContainer>
                 </CounterContainer>
             </div>
         );
