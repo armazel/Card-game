@@ -14,14 +14,14 @@ class App extends Component {
     return (
         <div>
             <AppContainer>
-                <BlurRouteButton iconType="home" classType="material-icons" to='/home' description='Home' fontSize='54px' padding="80px"></BlurRouteButton>
+                <BlurRouteButton iconType="home" classType="material-icons" to='/' description='Home' fontSize='54px' padding="80px"></BlurRouteButton>
                 <BlurRouteButton iconType='track_changes' classType="material-icons" to='/aboutUs' description='About Us' fontSize='54px' padding="80px"></BlurRouteButton>
                 <BlurRouteButton iconType='add' classType="material-icons" to='/counter' description='Counter' fontSize='54px' padding="80px"></BlurRouteButton>
             </AppContainer>
 
             <main>
                 <Switch>
-                    <Route exact path='/home' component={Home}/>
+                    <Route exact path='/' component={Home}/>
                     <Route exact path='/aboutUs' component={AboutUs}/>
                     <Route exact path='/counter' component={Counter}/>
                 </Switch>

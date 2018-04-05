@@ -36,7 +36,7 @@ const mapDispatchToProps = (dispatch) => {
         aboutUsActions: bindActionCreators(aboutUsActions, dispatch),
         loadersActive: bindActionCreators(loaderActions, dispatch)
     }
-}
+};
 
 const UsersList = ({ line,index }) => {
     return (
@@ -54,12 +54,6 @@ class AboutUs extends Component {
         this.state = {
             usersData: null
         }
-    }
-
-    componentWillReceiveProps(nextProps) {
-        this.setState({
-            //usersData: nextProps.users || null
-        });
     }
 
     onGetUsers() {

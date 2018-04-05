@@ -5,5 +5,7 @@ module.exports  = {
 
     GET_USERS:'GET_USERS',
 
+    AUTH:'AUTH',
+
     ACTIVE_LOADER: 'ACTIVE_LOADER'
 }

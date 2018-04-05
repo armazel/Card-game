@@ -12,7 +12,6 @@ import configureStore from './store/index'
 
 const store = configureStore();
 
-const sagaMiddleware = createSagaMiddleware();
 
 
 ReactDOM.render(

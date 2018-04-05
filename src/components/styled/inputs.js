@@ -5,9 +5,9 @@ import * as React from 'react'
 class InputBlock extends React.Component{
 
     render(){
-        const{fontSize,value, className,onChange, placeholder} = this.props;
+        const{fontSize,value, className,onChange, placeholder, type} = this.props;
         return (
-            <input placeholder={placeholder} onChange={onChange} className={className} type="text" fontSize={fontSize}  value={value}/>
+            <input placeholder={placeholder} onChange={onChange} className={className} type={type} fontSize={fontSize}  value={value}/>
         )
     }
 }
@@ -15,7 +15,8 @@ class InputBlock extends React.Component{
 
 export const InputData =  style(InputBlock).attrs({
     width:props=> props.width,
-    fontSize:props => props.fontSize
+    fontSize:props => props.fontSize,
+    type: props => props.type || 'text'
 })`
   padding: 5px 20px;
   box-shadow: 1px 1px 1px deepskyblue;
