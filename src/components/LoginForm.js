@@ -10,7 +10,6 @@ import { RingLoader } from 'react-spinners';
 import {connect} from "react-redux";
 import * as authActions from "../actions/authActions";
 import {bindActionCreators} from "redux";
-import {createSelector} from "reselect";
 
 
 const mapDispatchToProps = (dispatch) => {
@@ -55,7 +54,7 @@ class LoginForm extends Component {
     }
 
     render() {
-        const {userName,visible} = this.props;
+        const {userName} = this.props;
         const {login,password,visiblePreLoader} = this.state;
         return (
             <LoginWrapper width='50%'>

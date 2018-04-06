@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route,Link, Redirect, withRouter } from 'react-router-dom'
 import './App.css';
 import Home from './containers/Home'
 import Counter from './containers/Counter'
@@ -7,6 +7,7 @@ import AboutUs from './containers/AboutUs'
 import {BlurRouteButton} from './components/styled/buttons'
 import {AppContainer} from "./components/styled/appBlock";
 import 'material-design-icons';
+import {PrivateRouteAboutUs,PrivateRouteCounter,} from './protected_routes/routes'
 
 
 class App extends Component {
@@ -22,8 +23,8 @@ class App extends Component {
             <main>
                 <Switch>
                     <Route exact path='/' component={Home}/>
-                    <Route exact path='/aboutUs' component={AboutUs}/>
-                    <Route exact path='/counter' component={Counter}/>
+                    <PrivateRouteAboutUs  path='/aboutUs' component={AboutUs}/>
+                    <PrivateRouteCounter  path='/counter' component={Counter}/>
                 </Switch>
             </main>
         </div>

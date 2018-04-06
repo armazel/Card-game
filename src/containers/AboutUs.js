@@ -9,25 +9,13 @@ import * as aboutUsActions from '../actions/aboutUsActions'
 import * as loaderActions from '../actions/loaderActions'
 import {connect} from "react-redux";
 import { RingLoader } from 'react-spinners';
-import {createSelector} from 'reselect'
 
 
 const mapStateToProps = (state) => {
-    const userSailData = (state) => state.users.get('usersData');
-
-    const allPayWithDiscount = createSelector(
-        [userSailData],
-        (items) => {
-            return items.map(i=>{
-                return i.set('total',(i.get('goods') * i.get('cost')) / 100 * i.get('discount'));
-            });
-        }
-    );
 
     return {
         users: state.users.usersData,
         loaderActive: state.loaders.activeLoaderFlag || null,
-        total: userSailData
     }
 };
 
@@ -65,13 +53,13 @@ class AboutUs extends Component {
         const {users,loaderActive,total} = this.props;
         return (
             <div>
+
                 <h1>About US</h1>
                 <Link to='/'>
                     <BlurButton width='10%'
                                 fontSize='24px'
                                 padding="10px">Назад</BlurButton>
                 </Link>
-
                 <CounterContainer>
                     <CounterButton width="60px"
                                    description="О нашей команде"
