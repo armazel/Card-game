@@ -1,5 +1,6 @@
 import style from 'styled-components'
 import * as React from 'react'
+import fontGwent from '../../fonts/Chronicles_font.ttf'
 
 
 class InputBlock extends React.Component{
@@ -24,7 +25,15 @@ export const InputData =  style(InputBlock).attrs({
   font-size: ${props=>props.fontSize};
   transition: all .5s ease;
   border-radius: 2px;
+  background: white;
+  opacity: 0.5;
+  color: black;
   outline: none;
+  font-family: 'Gwent';
+  @font-face {
+    font-family: 'Gwent';
+    src: url(${fontGwent});
+  }
   &:hover{
     box-shadow: 5px 5px 5px darkslateblue;
     cursor: pointer;
@@ -36,8 +45,9 @@ export const InputDataBlock =  style.div.attrs({
     fontSize:props => props.fontSize
 })`
   width: 100%;
-    background: white;
+    background: transparent;
     display: flex;
+    color: white;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;

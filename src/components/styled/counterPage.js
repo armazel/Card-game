@@ -1,5 +1,6 @@
 import style from 'styled-components'
 import {ButtonClick} from './buttons'
+import fontGwent from '../../fonts/Chronicles_font.ttf'
 
 
 export const CounterContainer = style.div.attrs({
@@ -47,11 +48,16 @@ color:${props => props.color};
 font-size: 18px;
 display: flex;
 flex-wrap: wrap;
+color: white;
 width: 100%;
 justify-content: center;
 align-items: center;
 margin: ${props=> props.margin};
 padding: ${props => props.padding};
 width: ${props=> props.width};
-
+font-family: 'Gwent';
+  @font-face {
+    font-family: 'Gwent';
+    src: url(${fontGwent});
+  }
 `

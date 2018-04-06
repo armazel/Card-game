@@ -2,6 +2,7 @@ import style from 'styled-components'
 import {Link} from 'react-router-dom'
 import * as React from 'react'
 import {IconNode} from "./icon";
+import fontGwent from '../../fonts/Chronicles_font.ttf'
 
 export class LinkBlock extends React.Component {
 
@@ -23,14 +24,22 @@ export const BlurRouteButton = style(LinkBlock).attrs({
     padding: props => props.padding || '20px',
     width:props => props.width || '100%'
 }) `
-  background: rebeccapurple;
+  background: #0e7c5e;
   opacity: 0.8;
   display: flex;
+  text-shadow: 0.559px 0.829px 4px #000, 3px 3px 30px #efff66;
   justify-content: center;
   text-decoration: none;
   transition: 0.5s ease;
   width: ${props => props.width};
   box-shadow: 5px 5px 5px black;
+  font-family: 'Gwent';
+  @font-face {
+    font-family: 'Gwent';
+    src: url(${fontGwent});
+  }
+  
+  
   
   color: white;
   font-size:${props => props.fontSize};
@@ -47,13 +56,18 @@ export const BlurButton = style.button.attrs({
     padding: props => props.padding || '20px',
     width:props => props.width || '100%'
 }) `
-  background: rebeccapurple;
+  background: #0e7c5e;
   opacity: 0.8;
   transition: 0.5s ease;
   width: ${props => props.width};
   color: white;
   box-shadow: 5px 5px 5px black;
   font-size:${props => props.fontSize};
+  font-family: 'Gwent';
+  @font-face {
+    font-family: 'Gwent';
+    src: url(${fontGwent});
+  }
  
   &:hover {
     opacity: 1;

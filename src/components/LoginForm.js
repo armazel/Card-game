@@ -6,7 +6,7 @@ import {InputDataBlock,InputData} from "./styled/inputs";
 import {CounterText} from "./styled/counterPage";
 import storage from '../utils/storage'
 import '../utils/stringMethods';
-import { RingLoader } from 'react-spinners';
+import { PulseLoader } from 'react-spinners';
 import {connect} from "react-redux";
 import * as authActions from "../actions/authActions";
 import {bindActionCreators} from "redux";
@@ -87,8 +87,8 @@ class LoginForm extends Component {
                         }
                     </CounterText>
                     <Header>
-                        <RingLoader
-                            color={'rebeccapurple'}
+                        <PulseLoader
+                            color={'white'}
                             loading={visiblePreLoader}
                         />
                     </Header>
