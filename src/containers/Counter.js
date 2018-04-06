@@ -8,7 +8,8 @@ import { connect } from 'react-redux'
 import counter from "../reducers/counter";
 import { bindActionCreators } from 'redux'
 import * as counterActions from '../actions/CounterActions'
-
+import { Draggable, Droppable } from 'react-drag-and-drop'
+import {List,ListItem} from "../components/styled/titleHeaders";
 
 
 const mapStateToProps = (state) => {
@@ -23,51 +24,56 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
+const UsersList = ({ line,index }) => {
+    return (
+        line ?  <ListItem fontSize="18px">{line.label}</ListItem> : null
+    )
+};
+
 
 class Counter extends Component {
 
     constructor(props){
         super(props);
-        this.onCounterUpdate = this.onCounterUpdate.bind(this);
 
         this.state = {
-            counterValue: 0
+            dataItems: []
         };
     }
 
-    onCounterAddClick() {
-        this.props.counterActions.addCounter()
-    }
-
-    onCounterRemoveClick() {
-        this.props.counterActions.removeCounter()
-    }
-    onCounterUpdate(event){
-
-        this.setState({counterValue :event.target.value})
-    }
-
-    onCounterGetData(){
-        this.props.counterActions.updateCounter(parseInt(this.state.counterValue))
+    onDrop(data) {
+        let item = {
+            label:data.label
+        };
+        this.setState({
+            dataItems: [...this.state.dataItems, item]
+        })
     }
 
     render() {
-        const { addCounter,removeCounter } = this.props.counterActions
-        const { counterInfo } = this.props;
+        const { dataItems } = this.state;
         return (
             <WrapperContainer>
-                <CounterContainer>
-                    <Header>Counter</Header>
-                    <CounterButton onClick={() => this.onCounterRemoveClick()} iconType="exposure_neg_1" color='white' classType="material-icons"></CounterButton>
-                    <CounterText>{counterInfo}</CounterText>
-                    <CounterButton onClick={() => this.onCounterAddClick()} iconType="exposure_plus_1" color='white' classType="material-icons"></CounterButton>
-
-                    <InputDataBlock>
-                            <InputData value={this.state.counterValue} placeholder="Change count" iconType="edit" classType="material-icons" onChange={(e) => this.onCounterUpdate(e)}></InputData>
-                        <CounterButton onClick={() => this.onCounterGetData(this.state.counterValue)} iconType="edit" color='white' classType="material-icons"></CounterButton>
-                    </InputDataBlock>
-
-                </CounterContainer>
+                <div>
+                    <ul>
+                        <Draggable type="label" data="banana"><img style={{width:'140px', height:'240px', borderRadius:'10px'}} src="./aux_archers1.png" alt=""/></Draggable>
+                        <Draggable type="label" data="apple"><li>Apple</li></Draggable>
+                        <Draggable type="label" data="silver"><li>Silver</li></Draggable>
+                    </ul>
+                    <Droppable
+                        types={['label']} // <= allowed drop types
+                        onDrop={this.onDrop.bind(this)}>
+                        <ul className="Smoothie">tr</ul>
+                    </Droppable>
+                    <List>
+                        {
+                            dataItems ?
+                                dataItems.map((line, i) => {
+                                    return line ? <UsersList index={i+1} line={line} key={i}/> : null;
+                                }) : null
+                        }
+                    </List>
+                </div>
             </WrapperContainer>
         );
     }

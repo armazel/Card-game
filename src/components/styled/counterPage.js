@@ -8,7 +8,7 @@ export const CounterContainer = style.div.attrs({
 
 }) `
     width: 100%;
-    background: white;
+    background: transparent;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -38,26 +38,27 @@ export const CounterButton = style(ButtonClick).attrs({
   }
 `
 
-
-export const CounterText = style.span.attrs({
-    width: props => props.width || '60px',
-    padding: props => props.padding,
-    margin: props => props.margin
-})`
-color:${props => props.color};
-font-size: 18px;
-display: flex;
-flex-wrap: wrap;
-color: white;
-width: 100%;
-justify-content: center;
-align-items: center;
-margin: ${props=> props.margin};
-padding: ${props => props.padding};
-width: ${props=> props.width};
-font-family: 'Gwent';
-  @font-face {
+    export const CounterText = style.span.attrs({
+        width: props => props.width,
+        padding: props => props.padding,
+        margin: props => props.margin || '10px',
+        fontSize: props => props.fontSize
+    })`
+    color:${props => props.color};
+    display: flex;
+    flex-wrap: wrap;
+    color: white;
+    width: 100%;
+    background: transparent;
+    justify-content: center;
+    font-size: ${props => props.fontSize};
+    align-items: center;
+    margin: ${props => props.margin};
+    padding: ${props => props.padding};
+    width: ${props => props.width};
     font-family: 'Gwent';
-    src: url(${fontGwent});
-  }
-`
+      @font-face {
+        font-family: 'Gwent';
+        src: url(${fontGwent});
+      }
+    `

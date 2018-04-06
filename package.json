@@ -22,6 +22,7 @@
     "react-alert": "^4.0.2",
     "react-alert-template-basic": "^1.0.0",
     "react-dom": "^16.2.0",
+    "react-drag-and-drop": "^2.4.0",
     "react-icons": "^2.2.7",
     "react-loadable": "^5.3.1",
     "react-redux": "^5.0.7",

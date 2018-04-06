@@ -59,6 +59,11 @@ class AboutUs extends Component {
                     <WrapperContainer>
                         <CentralContainer>
                             <Header margin='0 0 50px 0' fontSize='56px'>Об игре</Header>
+                            <CounterContainer>
+                                <CounterText fontSize='24px'>Интересная игра для оттачивания навыков и дальнейшем развитии во вселенной Гвинт</CounterText>
+                                <CounterText fontSize='24px'>С уважением, команда разработчиков)</CounterText>
+                            </CounterContainer>
+
                             <iframe width="1280" height="640" src="https://www.youtube.com/embed/QKwJq_odG70"></iframe>
                         </CentralContainer>
                     </WrapperContainer>
