@@ -56,6 +56,7 @@ export const BlurRouteButtonStarted = BlurRouteButton.extend`
   
 `
 
+
 export const BlurButton = style.button.attrs({
     padding: props => props.padding || '20px',
     width:props => props.width || '100%'
@@ -88,6 +89,23 @@ export const BlurButtonLogoutBlock = style.div.attrs({})`
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+`
+
+export const SoundToggleBlock = style.div.attrs({})`
+  position:absolute;
+  left: 10px;
+  top: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  transition: 0.5s all ease;
+  cursor: pointer;
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+    fill: rebeccapurple;
+}
 `
 
 
