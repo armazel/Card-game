@@ -22,7 +22,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         counterActions: bindActionCreators(counterActions, dispatch)
     }
-}
+};
 
 const UsersList = ({ line,index }) => {
     return (

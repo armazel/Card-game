@@ -22,3 +22,13 @@ ReactDOM.render(
     </Provider>,
     document.getElementById('root'));
 registerServiceWorker();
+
+
+if (module.hot) {
+    module.hot.accept('./App', () => {
+        const NextApp = require('./App').default
+        ReactDOM.render(
+            <NextApp />,
+        )
+    })
+}

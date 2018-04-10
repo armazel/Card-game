@@ -20,6 +20,16 @@ export const PrivateRouteCounter = ({ component: Component }) => (
     )} />
 );
 
+export const PrivateRouteGameArea = ({ component: Component }) => (
+    <Route render={(props) => (
+        !!storage.login === true
+            ? <Component {...props} />
+            : <Redirect to='/' />
+    )} />
+);
+
+
+
 
 
 //Убранн коммит

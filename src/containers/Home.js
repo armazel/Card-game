@@ -2,13 +2,17 @@ import React, {Component} from 'react'
 import Loadable from 'react-loadable';
 import Loading from '../components/Loading'
 import {WrapperContainer,CentralContainer} from "../components/styled/appBlock";
-import {BlurButton} from "../components/styled/buttons";
+import {BlurButtonLogoutBlock,BlurButton} from "../components/styled/buttons";
 import {Header} from "../components/styled/titleHeaders";
 import { PulseLoader } from 'react-spinners';
 import storage from '../utils/storage'
 import {connect} from "react-redux";
 import * as authActions from "../actions/authActions";
 import {bindActionCreators} from "redux";
+import {BlurRouteButtonStarted} from '../components/styled/buttons'
+import Sound from 'react-sound'
+import {CounterText} from "../components/styled/counterPage";
+import {IconNode} from "../components/styled/icon";
 
 
 //import some components with happend the loadable
@@ -17,8 +21,6 @@ const LoadableComponent = Loadable({
     loading: Loading,
     delay: 300
 });
-
-
 
 const mapStateToProps = (state) => {
     return {
@@ -38,7 +40,9 @@ class Home extends Component {
         super(props);
         this.state = {
             showComponent: false,
-            visiblePreLoader: false
+            visiblePreLoader: false,
+            position: 0,
+            playStatus: Sound.status.PLAYING
         }
     }
 
@@ -78,7 +82,18 @@ class Home extends Component {
                 <CentralContainer>
                     <Header margin='0 0 50px 0' fontSize='56px'>Добро пожаловать {storage.login.length ? storage.login : ''}</Header>
                     {
-                        storage.login.length ? <BlurButton width='10%' fontSize='24px' padding="30px" onClick={(e) => this.onLogout()}>Разлогиниться</BlurButton> : null
+                        storage.login.length ?
+                            <BlurRouteButtonStarted iconType="touch_app" classType="material-icons" to='/gameArea' description='Играть' width='30%' fontSize='54px' padding="80px"/>
+                            : null
+                    }
+                    {
+                        storage.login.length ?
+                            <BlurButtonLogoutBlock>
+                                <IconNode iconType="person" classType="material-icons"></IconNode>
+                                <CounterText fontSize='24px'>{storage.login}</CounterText>
+                                <BlurButton width='100%' fontSize='24px' padding="30px" onClick={(e) => this.onLogout()}>Разлогиниться</BlurButton>
+                            </BlurButtonLogoutBlock>
+                            : null
                     }
                     {
                         !showComponent && !storage.login.length ?
@@ -89,10 +104,24 @@ class Home extends Component {
                     {
                         (showComponent && !auth) ? <LoadableComponent visible={auth}></LoadableComponent> : null
                     }
+                    <button onClick={() => this.setState({ playStatus: this.state.playStatus === 'PLAYING' ? Sound.status.PAUSED :  Sound.status.PLAYING})}>pause</button>
+                    <Sound
+                        url="https://raw.githubusercontent.com/scottschiller/SoundManager2/master/demo/_mp3/1hz-10khz-sweep.mp3"
+                        playStatus={this.state.playStatus}
+                        playFromPosition={this.state.position}
+                        onLoading={({ bytesLoaded, bytesTotal }) => console.log(`${bytesLoaded / bytesTotal * 100}% loaded`)}
+                        onLoad={() => console.log('Loaded')}
+                        onPlaying={({ position }) => console.log('Position', position)}
+                        onPause={() => console.log('Paused')}
+                        onResume={() => console.log('Resumed')}
+                        onStop={() => console.log('Stopped')}
+                        onFinishedPlaying={() => this.setState({ playStatus: Sound.status.STOPPED })}
+                    />
                     <Header>
                         <PulseLoader
                             color={'white'}
                             loading={visiblePreLoader}
+                            onPlaying={true}
                         />
                     </Header>
                 </CentralContainer>

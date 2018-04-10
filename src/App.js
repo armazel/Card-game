@@ -3,6 +3,7 @@ import { Switch, Route,Link, Redirect, withRouter } from 'react-router-dom'
 import './App.css';
 import Home from './containers/Home'
 import Counter from './containers/Counter'
+import GameArea from './containers/GameArea'
 import AboutUs from './containers/AboutUs'
 import {BlurRouteButton} from './components/styled/buttons'
 import {AppContainer,AppWrapper} from "./components/styled/appBlock";
@@ -25,6 +26,7 @@ class App extends Component {
                     <Route exact path='/' component={Home}/>
                     <PrivateRouteAboutUs  path='/aboutUs' component={AboutUs}/>
                     <PrivateRouteCounter  path='/counter' component={Counter}/>
+                    <PrivateRouteCounter  path='/gameArea' component={GameArea}/>
                 </Switch>
             </main>
         </AppWrapper>

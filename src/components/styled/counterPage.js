@@ -48,7 +48,7 @@ export const CounterButton = style(ButtonClick).attrs({
     display: flex;
     flex-wrap: wrap;
     color: white;
-    width: 100%;
+    width: ${props => props.width};
     background: transparent;
     justify-content: center;
     font-size: ${props => props.fontSize};

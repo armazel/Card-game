@@ -52,6 +52,10 @@ export const BlurRouteButton = style(LinkBlock).attrs({
 }
 `
 
+export const BlurRouteButtonStarted = BlurRouteButton.extend`
+  
+`
+
 export const BlurButton = style.button.attrs({
     padding: props => props.padding || '20px',
     width:props => props.width || '100%'
@@ -74,6 +78,16 @@ export const BlurButton = style.button.attrs({
     cursor: pointer;
     fill: rebeccapurple;
 }
+`
+
+export const BlurButtonLogoutBlock = style.div.attrs({})`
+  position:absolute;
+  right: 10px;
+  top: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 `
 
 
