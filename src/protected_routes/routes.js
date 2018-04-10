@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Route,Redirect } from 'react-router-dom'
 import storage from '../utils/storage';
-import AlertTemplate from 'react-alert-template-basic'
 
 
 export const PrivateRouteAboutUs = ({ component: Component }) => (

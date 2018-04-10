@@ -44,6 +44,8 @@
     "@storybook/addon-knobs": "^3.3.14",
     "@storybook/addon-storyshots": "^3.3.14",
     "@storybook/react": "^3.3.14",
+    "babel-cli": "^6.26.0",
+    "babel-preset-flow": "^6.23.0",
     "electron": "^1.8.2",
     "electron-devtools-installer": "^2.2.1",
     "enzyme": "^3.3.0",
@@ -70,6 +72,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "flow": "flow"
   }
 }

@@ -13,7 +13,6 @@ export default function Counter(state = State, action) {
 
         case actionsType.COUNTER_REMOVE:
             if(state.counterInfo === 0){
-                alert('counter most more than ' + state.counterInfo)
                 return {...state, counterInfo: state.counterInfo };
             }
             return {...state, counterInfo: state.counterInfo - 1 };
