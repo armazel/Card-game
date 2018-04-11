@@ -1,7 +1,8 @@
 import actionsType from '../actions/index';
 
 const State = {
-    activeLoaderFlag: null
+    activeLoaderFlag: null,
+    visibleRouteLine: true
 };
 
 export default function LoaderActive(state = State, action) {
@@ -9,6 +10,9 @@ export default function LoaderActive(state = State, action) {
 
         case actionsType.ACTIVE_LOADER:
             return {...state, activeLoaderFlag: action.toggle };
+
+        case actionsType.VISIBLE_ROUTE_LINE:
+            return {...state, visibleRouteLine: action.visibleRouteLine};
 
         default:
             return state;

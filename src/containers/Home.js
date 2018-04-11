@@ -8,11 +8,13 @@ import { PulseLoader } from 'react-spinners';
 import storage from '../utils/storage'
 import {connect} from "react-redux";
 import * as authActions from "../actions/authActions";
+import * as visibleActions from "../actions/loaderActions";
 import {bindActionCreators} from "redux";
 import {BlurRouteButtonStarted} from '../components/styled/buttons'
 import Sound from 'react-sound'
 import {CounterText} from "../components/styled/counterPage";
 import {IconNode} from "../components/styled/icon";
+
 
 
 //import some components with happend the loadable
@@ -24,13 +26,14 @@ const LoadableComponent = Loadable({
 
 const mapStateToProps = (state) => {
     return {
-        auth: state.auth.authInfo
+        auth: state.auth.authInfo,
     }
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
         authActions: bindActionCreators(authActions, dispatch),
+        visibleActions: bindActionCreators(visibleActions, dispatch),
     }
 };
 
@@ -41,13 +44,25 @@ class Home extends Component {
         this.state = {
             showComponent: false,
             visiblePreLoader: false,
+            loop: true,
             position: 0,
-            playStatus: Sound.status.PLAYING
+            playStatus: Sound.status.PLAYING,
+            visibleStartGameLoader: false
         }
     }
 
     getAuthInfo() {
         this.props.authActions.authGetInfo()
+    }
+
+    startGameArea(){
+        this.setState({ visibleStartGameLoader: true });
+        setTimeout(() => {
+            this.setState({ visibleStartGameLoader: false });
+            this.props.history.push("/gameArea");
+            this.props.visibleActions.visibleRouteLine(false);
+        }, 2000);
+
     }
 
     onMouseClick = () => {
@@ -74,7 +89,7 @@ class Home extends Component {
     }
 
     render() {
-        const {showComponent,visiblePreLoader,playStatus} = this.state;
+        const {showComponent,visiblePreLoader,visibleStartGameLoader} = this.state;
         const {auth} = this.props;
 
         return (
@@ -83,9 +98,16 @@ class Home extends Component {
                     <Header margin='0 0 50px 0' fontSize='56px'>Добро пожаловать {storage.login.length ? storage.login : ''}</Header>
                     {
                         storage.login.length ?
-                            <BlurRouteButtonStarted iconType="touch_app" classType="material-icons" to='/gameArea' description='Играть' width='30%' fontSize='54px' padding="80px"/>
+                            <BlurRouteButtonStarted onClick={(e)=> this.startGameArea()} iconType="touch_app" classType="material-icons" width='30%' fontSize='54px' padding="80px">Играть</BlurRouteButtonStarted>
                             : null
                     }
+
+                    <Header>
+                        <PulseLoader
+                            color={'white'}
+                            loading={visibleStartGameLoader}
+                        />
+                    </Header>
 
                     {
                         storage.login.length ?
@@ -107,32 +129,6 @@ class Home extends Component {
                         (showComponent && !auth) ? <LoadableComponent visible={auth}></LoadableComponent> : null
                     }
 
-                    {
-                        storage.login.length ?
-                            <Sound
-                                url="https://psv4.vkuseraudio.net/c813730/u183628423/audios/865fb4fe81a4.mp3"
-                                playStatus={this.state.playStatus}
-                                playFromPosition={this.state.position}
-                                onLoading={({ bytesLoaded, bytesTotal }) => console.log(`${bytesLoaded / bytesTotal * 100}% loaded`)}
-                                onLoad={() => console.log('Loaded')}
-                                onPlaying={({ position }) => console.log('Position', position)}
-                                onPause={() => console.log('Paused')}
-                                onResume={() => console.log('Resumed')}
-                                onStop={() => console.log('Stopped')}
-                                onFinishedPlaying={() => this.setState({ playStatus: Sound.status.STOPPED })}
-                            /> : null
-                    }
-
-                    {
-                        storage.login.length ?
-                            <SoundToggleBlock onClick={() => this.setState({ playStatus: this.state.playStatus === 'PLAYING' ? Sound.status.PAUSED :  Sound.status.PLAYING})}>
-                                {
-                                    playStatus === 'PLAYING' ? <IconNode fontSize='40px' iconType="mic" classType="material-icons" >pause</IconNode> :
-                                        <IconNode iconType="mic_none" fontSize='40px' classType="material-icons">pause</IconNode>
-                                }
-
-                            </SoundToggleBlock>: null
-                    }
 
                     <Header>
                         <PulseLoader

@@ -13,22 +13,9 @@ import configureStore from './store/index'
 const store = configureStore();
 
 
-
 ReactDOM.render(
     <Provider store={store}>
-        <Router>
-            <App/>
-        </Router>
+        <App/>
     </Provider>,
     document.getElementById('root'));
 registerServiceWorker();
-
-
-if (module.hot) {
-    module.hot.accept('./App', () => {
-        const NextApp = require('./App').default
-        ReactDOM.render(
-            <NextApp />,
-        )
-    })
-}

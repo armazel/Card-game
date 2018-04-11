@@ -16,7 +16,12 @@ export class ButtonClick extends React.Component {
 
     render() {
         const { classType, iconType, fontSize, color, onClick, description} = this.props;
-        return <button onClick={onClick} className={this.props.className}><IconNode color={color} classType={classType} fontSize={fontSize} iconType={iconType}></IconNode>{description}</button>;
+        return (
+            <button onClick={onClick} className={this.props.className}>
+                <IconNode color={color} classType={classType} fontSize={fontSize} iconType={iconType}></IconNode>
+                {description}
+            </button>
+        );
     }
 }
 
@@ -52,11 +57,6 @@ export const BlurRouteButton = style(LinkBlock).attrs({
 }
 `
 
-export const BlurRouteButtonStarted = BlurRouteButton.extend`
-  
-`
-
-
 export const BlurButton = style.button.attrs({
     padding: props => props.padding || '20px',
     width:props => props.width || '100%'
@@ -81,6 +81,11 @@ export const BlurButton = style.button.attrs({
 }
 `
 
+export const BlurRouteButtonStarted = BlurButton.extend`
+  
+`
+
+
 export const BlurButtonLogoutBlock = style.div.attrs({})`
   position:absolute;
   right: 10px;
@@ -92,15 +97,15 @@ export const BlurButtonLogoutBlock = style.div.attrs({})`
 `
 
 export const SoundToggleBlock = style.div.attrs({})`
-  position:absolute;
-  left: 10px;
-  top: 120px;
+  position:relative;
+  left: 0px;
+  //top: 120px;
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   transition: 0.5s all ease;
   cursor: pointer;
+  margin: 20px 5px 20px ;
   &:hover {
     opacity: 1;
     cursor: pointer;
