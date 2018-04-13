@@ -15,7 +15,7 @@ import {SoundToggleBlock} from "./components/styled/buttons";
 import {IconNode} from "./components/styled/icon";
 import {connect} from "react-redux";
 import loaders from "./reducers/loaders";
-
+import {WrapperEmptyContainer} from "./components/styled/appBlock";
 
 
 const mapStateToProps = (state) => {
@@ -31,9 +31,9 @@ class App extends Component {
         this.state = {
             showComponent: false,
             visiblePreLoader: false,
-            loop: true,
+            loop: false,
             position: 0,
-            playStatus: Sound.status.PLAYING
+            playStatus: Sound.status.STOPPED
         }
     }
 
@@ -65,13 +65,16 @@ class App extends Component {
             </Router>
             {
                 storage.login.length ?
-                    <Sound
-                        url="https://psv4.vkuseraudio.net/c813730/u183628423/audios/865fb4fe81a4.mp3"
-                        playStatus={this.state.playStatus}
-                        loop={loop}
-                        playFromPosition={this.state.position}
-                        onFinishedPlaying={() => this.setState({ playStatus: Sound.status.STOPPED })}
-                    /> : null
+                    <WrapperEmptyContainer>
+                        <Sound
+                            url="https://psv4.vkuseraudio.net/c422130/u230012738/audios/c0dd05a22bcd.mp3?"
+                            playStatus={this.state.playStatus}
+                            loop={loop}
+                            playFromPosition={this.state.position}
+                            onFinishedPlaying={() => this.setState({ playStatus: Sound.status.STOPPED })}
+                        />
+                    </WrapperEmptyContainer>
+                   : null
             }
             {
                 storage.login.length ?

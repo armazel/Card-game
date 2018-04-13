@@ -11,3 +11,12 @@ export function authGetInfo() {
     };
 }
 
+export function logout() {
+    return {
+        type: actionsType.LOGOUT,
+        payload:{
+            auth: ''
+        }
+    };
+}
+

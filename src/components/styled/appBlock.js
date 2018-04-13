@@ -1,4 +1,7 @@
 import style from 'styled-components'
+import * as React from "react";
+import {IconNode} from "./icon";
+import {CounterText} from "./counterPage";
 
 
 export const AppContainer = style.div.attrs({
@@ -47,6 +50,28 @@ export const  WrapperContainer = style.div.attrs({
     width: ${props => props.width};
     margin: ${props=> props.margin};
     padding: ${props => props.padding};
+    
+`
+
+export const  WrapperEmptyContainer = style.div.attrs({
+    onClick: props => props.onClick,
+    width: props => props.width || '100%',
+    padding: props => props.padding,
+    margin: props => props.margin
+}) `
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    z-index: -1;
+    width: ${props => props.width};
+    margin: ${props=> props.margin};
+    padding: ${props => props.padding};
+    cursor: pointer;
+    transition: all 0.5s ease;
+    &:hover{
+      opacity: 1;
+    }
 `
 
 export const  CentralContainer = style.div.attrs({

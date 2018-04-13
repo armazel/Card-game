@@ -5,7 +5,7 @@ import fontGwent from '../../fonts/Chronicles_font.ttf'
 export const Header = style.h1.attrs({
     fontSize: props=>props.fontSize,
     color: props=> props.color || 'white',
-    margin: props => props.margin
+    margin: props => props.margin || '5px'
 })`
   text-shadow: green;
   margin: ${props => props.margin};

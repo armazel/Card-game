@@ -89,7 +89,8 @@ export const BlurRouteButtonStarted = BlurButton.extend`
 export const BlurButtonLogoutBlock = style.div.attrs({})`
   position:absolute;
   right: 10px;
-  top: 120px;
+  top: 80px;
+  z-index: -1;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -100,6 +101,7 @@ export const SoundToggleBlock = style.div.attrs({})`
   position:relative;
   left: 0px;
   //top: 120px;
+  width: 10%;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
