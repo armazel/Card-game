@@ -13,6 +13,7 @@ import {BlurButton} from "../styled/buttons";
 import * as authActions from "../../actions/authActions";
 import Sound from "react-sound";
 import { PulseLoader } from 'react-spinners';
+import {CloseCrossBlock} from "./styled/modalUserInfo";
 
 
 const customStyles = {
@@ -87,6 +88,9 @@ class ModalWindow extends Component {
             >
                 <ModalHeaderBlock>
                     <Header>Информация о пользователе</Header>
+                    <CloseCrossBlock onClick={()=>this.closeModal()}>
+                        <IconNode color='white' fontSize='34px' iconType="clear" classType="material-icons"></IconNode>
+                    </CloseCrossBlock>
                 </ModalHeaderBlock>
                 <ModalBodyBlock>
                     <ModalBlock>

@@ -63,6 +63,7 @@ export const BlurButton = style.button.attrs({
 }) `
   background: #0e7c5e;
   opacity: 0.8;
+  outline: none;
   transition: 0.5s ease;
   width: ${props => props.width};
   color: white;

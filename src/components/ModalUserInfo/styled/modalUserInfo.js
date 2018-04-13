@@ -40,3 +40,11 @@ export const ModalBodyBlock = style(ModalBlock).attrs({})`
   margin: 0;
 `
 
+export const CloseCrossBlock = style.div.attrs()`
+position: absolute;
+right: 5px;
+top: 5px;
+display: flex;
+justify-content: center;
+align-items: center;
+`
