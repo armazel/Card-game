@@ -45,7 +45,7 @@ class LoginForm extends Component {
     }
 
     onLogin(login,password){
-        storage.login = (login.length && password.length) && login;
+        storage.login = (login && password) && login;
         this.setState({ visiblePreLoader: true });
         setTimeout(() => {
             this.setState({ visiblePreLoader: false });
@@ -61,7 +61,7 @@ class LoginForm extends Component {
                 <Header width='100%'>Авторизация пользователя {userName}</Header>
                 <InputLoginWrapper>
                     <InputDataBlock width="100%">
-                        <InputData value={storage.login.length ? storage.login : login}
+                        <InputData value={storage.login ? storage.login : login}
                                    onChange={(e) => this.onCounterUpdate(e, 'login')} name='login' type='text'
                                    placeholder="Your login" iconType="edit" classType="material-icons"></InputData>
                     </InputDataBlock>

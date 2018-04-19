@@ -22,3 +22,12 @@ export function updateCounter(value) {
     };
 }
 
+export function getUsersData(){
+    return{
+        type:actionsType.GET_USERS,
+        payload: {
+            value:getSometing()
+        }
+    }
+}
+

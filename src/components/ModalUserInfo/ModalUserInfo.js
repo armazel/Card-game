@@ -74,7 +74,7 @@ class ModalWindow extends Component {
     }
 
     render() {
-        const {isOpenedModalUser,auth} = this.props;
+        const {isOpenedModalUser,auth,userName} = this.props;
         const {visiblePreLoader} = this.state;
 
 
@@ -84,7 +84,7 @@ class ModalWindow extends Component {
                 isOpen={isOpenedModalUser && auth}
                 onRequestClose={() => this.closeModal()}
                 style={customStyles}
-                contentLabel="Example Modal"
+                contentLabel="Информация о пользователе"
             >
                 <ModalHeaderBlock>
                     <Header>Информация о пользователе</Header>
@@ -98,7 +98,7 @@ class ModalWindow extends Component {
                     </ModalBlock>
                     <ModalBlock>
                         <CounterText color='gray' fontSize='40px'>
-                            {storage.login.length ? storage.login : ''}
+                            {userName ? userName : ''}
                         </CounterText>
                         <CounterText color='gray' fontSize='40px'>
                             ранг 36

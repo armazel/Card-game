@@ -9,18 +9,27 @@ import {BlurRouteButton} from './components/styled/buttons'
 import {AppContainer,AppWrapper} from "./components/styled/appBlock";
 import 'material-design-icons';
 import {PrivateRouteAboutUs,PrivateRouteCounter,} from './protected_routes/routes'
-import storage from "./utils/storage";
 import Sound from "react-sound";
 import {SoundToggleBlock} from "./components/styled/buttons";
 import {IconNode} from "./components/styled/icon";
 import {connect} from "react-redux";
-import loaders from "./reducers/loaders";
 import {WrapperEmptyContainer} from "./components/styled/appBlock";
+import * as visibleActions from "./actions/loaderActions";
+import {bindActionCreators} from "redux";
+import * as authActions from "./actions/authActions";
 
 
 const mapStateToProps = (state) => {
     return {
-        visibleRouteLine: state.loaders.visibleRouteLine
+        visibleRouteLine: state.loaders.visibleRouteLine,
+        auth: state.auth.authInfo
+    }
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        visibleActions: bindActionCreators(visibleActions, dispatch),
+        authActions: bindActionCreators(authActions, dispatch),
     }
 };
 
@@ -37,10 +46,13 @@ class App extends Component {
         }
     }
 
+    componentDidMount(){
+        this.props.authActions.authGetInfo();
+    }
 
-  render() {
+    render() {
       const {playStatus,loop} = this.state;
-      const {visibleRouteLine} = this.props;
+      const {visibleRouteLine,auth} = this.props;
 
     return (
         <AppWrapper>
@@ -53,7 +65,7 @@ class App extends Component {
                         <PrivateRouteCounter path='/gameArea' component={GameArea}/>
                     </Switch>
                     {
-                        visibleRouteLine ?
+                        visibleRouteLine && auth ?
                             <AppContainer>
                                 <BlurRouteButton iconType="home" classType="material-icons" to='/' description='Главная' fontSize='54px' padding="80px"></BlurRouteButton>
                                 <BlurRouteButton iconType='theaters' classType="material-icons" to='/aboutUs' description='Об игре' fontSize='54px' padding="80px"></BlurRouteButton>
@@ -64,7 +76,7 @@ class App extends Component {
 
             </Router>
             {
-                storage.login.length ?
+                auth ?
                     <WrapperEmptyContainer>
                         <Sound
                             url="https://psv4.vkuseraudio.net/c422130/u230012738/audios/c0dd05a22bcd.mp3?"
@@ -77,7 +89,7 @@ class App extends Component {
                    : null
             }
             {
-                storage.login.length ?
+                auth ?
                     <SoundToggleBlock onClick={() => this.setState({ playStatus: this.state.playStatus === 'PLAYING' ? Sound.status.PAUSED :  Sound.status.PLAYING})}>
                         {
                             playStatus === 'PLAYING' ? <IconNode fontSize='40px' iconType="mic" classType="material-icons" >pause</IconNode> :
@@ -91,4 +103,4 @@ class App extends Component {
   }
 }
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps,mapDispatchToProps)(App);

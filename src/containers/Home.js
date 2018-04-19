@@ -55,10 +55,6 @@ class Home extends Component {
         }
     }
 
-    getAuthInfo() {
-        this.props.authActions.authGetInfo()
-    }
-
     startGameArea(){
         this.setState({ visibleStartGameLoader: true });
         setTimeout(() => {
@@ -70,7 +66,6 @@ class Home extends Component {
     }
 
     onMouseClick = () => {
-        this.getAuthInfo();
         this.setState({ visiblePreLoader: true });
         setTimeout(() => {
             this.setState({ visiblePreLoader: false });
@@ -85,8 +80,11 @@ class Home extends Component {
     }
 
     componentDidMount(){
-        this.getAuthInfo();
+        if(this.props.auth){
+            this.props.visibleActions.visibleRouteLine(true);
+        }
     }
+
 
     onLogout(){
         this.props.authActions.logout()
@@ -147,7 +145,7 @@ class Home extends Component {
                             onPlaying={true}
                         />
                     </Header>
-                    <ModalWindow/>
+                    <ModalWindow userName={storage.login}/>
                 </CentralContainer>
             </WrapperContainer>
         );

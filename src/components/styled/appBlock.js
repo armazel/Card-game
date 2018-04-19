@@ -34,16 +34,17 @@ export const AppWrapper = style.div.attrs({
 `
 
 
+
+
 export const  WrapperContainer = style.div.attrs({
     width: props => props.width || '100%',
     padding: props => props.padding,
     margin: props => props.margin
 }) `
     display:flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+    
     position: absolute;
+    outline: none;
     z-index: -1;
     top: 0;
     bottom: 0;
@@ -51,6 +52,18 @@ export const  WrapperContainer = style.div.attrs({
     margin: ${props=> props.margin};
     padding: ${props => props.padding};
     
+`
+
+export const  WrapperInfoContent = WrapperContainer.extend`
+  height: 100%;
+  margin: 50px;
+  position: relative;
+  top: 30px;
+  flex-wrap: wrap;
+    justify-content: start;
+    align-items: start;
+    max-height: 100vh;
+ 
 `
 
 export const  WrapperEmptyContainer = style.div.attrs({
@@ -64,6 +77,7 @@ export const  WrapperEmptyContainer = style.div.attrs({
     justify-content: center;
     align-items: center;
     z-index: -1;
+    overflow: auto;
     width: ${props => props.width};
     margin: ${props=> props.margin};
     padding: ${props => props.padding};
@@ -72,6 +86,19 @@ export const  WrapperEmptyContainer = style.div.attrs({
     &:hover{
       opacity: 1;
     }
+`
+
+export const WrapperBlock = style.div.attrs()`
+   
+`
+
+export const WrapperScrolledList = WrapperEmptyContainer.extend`
+   max-height: 150px;
+   width: 100%;
+   background: white;
+   opacity: 0.6;
+   display: flex;
+   justify-content: center;
 `
 
 export const  CentralContainer = style.div.attrs({

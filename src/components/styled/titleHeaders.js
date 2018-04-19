@@ -22,7 +22,7 @@ export const Header = style.h1.attrs({
 `
 
 
-export const List = style.ul.attrs({
+export const ListData = style.ul.attrs({
     padding:props => props.padding || '10px',
     width: props => props.width
 })`
