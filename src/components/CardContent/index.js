@@ -12,7 +12,14 @@ import generateData from "../../utils/generateData";
 
 const styles = {
     card: {
-        width:400
+        width:350,
+        maxHeight:450
+    },
+    text: {
+        maxHeight:280,
+        whiteSpace: 'nowrap',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis'
     },
     media: {
         maxHeight: 200,
@@ -42,7 +49,7 @@ class CardContentBlock extends Component {
 
     render() {
 
-        const { classes,imageURL,name,email,amount } = this.props;
+        const { classes,imageURL,name,email,amount,text } = this.props;
         const { date,options } = this.state;
 
         return (
@@ -68,6 +75,9 @@ class CardContentBlock extends Component {
                         </Typography>
                         <Typography component="p">
                            Email: {email}
+                        </Typography>
+                        <Typography className={classes.text} component="p">
+                            {text}
                         </Typography>
                     </CardContent>
                     <CardActions>

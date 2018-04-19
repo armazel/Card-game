@@ -50,7 +50,7 @@ class Counter extends Component {
 
         this.state = {
             dataItems: [],
-            data: generateData(100)
+            data: generateData(1000)
         };
     }
 
@@ -74,8 +74,9 @@ class Counter extends Component {
                               email={this.state.data[index].email}
                               name={this.state.data[index].name}
                               amount={this.state.data[index].amountCount}
+                              text={this.state.data[index].text}
                               imageURL={this.state.data[index].imageUrl}/>
-        )
+        );
 
 
     isRowLoaded = ({ index }: { index: number }) => !!this.state.data[index]
@@ -87,7 +88,7 @@ class Counter extends Component {
 
         return (
             <WrapperContainer>
-                <WrapperInfoContent width='400px'>
+                <WrapperInfoContent width='350px'>
                     <AutoSizer>
                         {
                             ({width,height}) =>{
@@ -96,9 +97,10 @@ class Counter extends Component {
                                         width={width}
                                         height={height}
                                         rowCount={data.length}
-                                        rowHeight={400}
-                                        total={5}
-                                        itemsPerPage={5}
+                                        rowHeight={420}
+
+                                        overscanRowCount={5}
+                                        scrollToAlignment='start'
                                         rowRenderer={this.renderRow}
                                     ></List>
                                 )

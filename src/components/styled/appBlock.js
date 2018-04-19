@@ -59,6 +59,7 @@ export const  WrapperInfoContent = WrapperContainer.extend`
   margin: 50px;
   position: relative;
   top: 30px;
+  z-index: 5;
   flex-wrap: wrap;
     justify-content: start;
     align-items: start;

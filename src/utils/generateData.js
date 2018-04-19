@@ -12,6 +12,7 @@ const generateData = (count) =>{
             email: faker.internet.email(),
             imageUrl: faker.internet.avatar(),
             amountCount: faker.finance.amount(),
+            text: faker.lorem.paragraph()
         });
     }
 
