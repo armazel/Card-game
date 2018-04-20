@@ -18,10 +18,10 @@ export const AppContainer = style.div.attrs({
     position: relative;
      @media(max-width: 1024px) {
       width: 100%;
-      display: ${({ visible }) => (visible ? 'flex' : 'none')};
+      display: (${({ visible }) => (visible ? 'flex' : 'none')});
       transform: translate3d(${({ visible }) => (visible ? '0' : '-100%')}, 0, 0);
-      transition: box-shadow 0.7s ease, transform 0.2s ease;
-      box-shadow: ${({ visible }) => (visible && '2px 0 5px rgba(0, 0, 0, 0.25)')};
+      transition: box-shadow 0.7s ease, transform 0.5s ease;
+      box-shadow: (${({ visible }) => (visible && '2px 0 5px rgba(0, 0, 0, 0.25)')});
       flex-wrap: wrap;
       justify-content: left;
       position: fixed;
