@@ -69,7 +69,7 @@ export const WrapperContainer = style.div.attrs({
 `
 
 export const  WrapperInfoContent = WrapperContainer.extend`
-  height: 92%;
+  height: 88%;
   top: 70px;
   position: relative;
   display: block;
