@@ -43,9 +43,15 @@ export const BlurRouteButton = style(LinkBlock).attrs({
     font-family: 'Gwent';
     src: url(${fontGwent});
   }
-  
-  
-  
+  @media(max-width: 1380px) {
+    font-size: 32px;
+  }
+   @media(max-width: 1024px) {
+    font-size: 54px;
+    padding: 30px 10px;
+    text-shadow: none;
+    box-shadow: none;
+  }
   color: white;
   font-size:${props => props.fontSize};
  
@@ -91,17 +97,21 @@ export const BlurButtonLogoutBlock = style.div.attrs({})`
   position:absolute;
   right: 10px;
   top: 80px;
-  z-index: -1;
+  z-index: 5;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  @media(max-width: 1024px) {
+    font-size: 32px;
+    top: 10px;
+  }
 `
 
 export const SoundToggleBlock = style.div.attrs({})`
-  position:relative;
-  left: 0px;
-  //top: 120px;
+  position:fixed;
+  left: 20px;
+  bottom: 20px;
   width: 10%;
   display: flex;
   align-items: center;
@@ -114,6 +124,7 @@ export const SoundToggleBlock = style.div.attrs({})`
     cursor: pointer;
     fill: rebeccapurple;
 }
+
 `
 
 

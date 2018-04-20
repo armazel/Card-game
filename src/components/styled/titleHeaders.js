@@ -19,6 +19,10 @@ export const Header = style.h1.attrs({
     font-family: 'Gwent';
     src: url(${fontGwent});
   }
+  media(max-width: 1024px) {
+    
+  }
+  
 `
 
 

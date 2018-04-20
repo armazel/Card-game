@@ -23,7 +23,7 @@ const customStyles = {
         right                 : 'auto',
         bottom                : 'auto',
         position              : 'relative',
-        width                 : '50%',
+        width                 : '70%',
         margin                : '0',
         padding               : '0',
         backgroundColor                : 'rgba(0, 0, 0, 0.25)',

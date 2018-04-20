@@ -14,6 +14,9 @@ export const ModalHeaderBlock = style.div.attrs({})`
   top: 0;
   left: 0;
   margin: 0;
+  @media(max-width: 1380px) {
+    padding: 20px;
+  }
 `
 
 export const ModalBlock = style.div.attrs({

@@ -11,9 +11,9 @@ import 'material-design-icons';
 import {PrivateRouteAboutUs,PrivateRouteCounter,} from './protected_routes/routes'
 import Sound from "react-sound";
 import {SoundToggleBlock} from "./components/styled/buttons";
-import {IconNode} from "./components/styled/icon";
+import {IconNode,IconBurgerMenu,IconCloseMenu} from "./components/styled/icon";
 import {connect} from "react-redux";
-import {WrapperEmptyContainer} from "./components/styled/appBlock";
+import {WrapperEmptyContainer,WrapperBlock} from "./components/styled/appBlock";
 import * as visibleActions from "./actions/loaderActions";
 import {bindActionCreators} from "redux";
 import * as authActions from "./actions/authActions";
@@ -42,6 +42,7 @@ class App extends Component {
             visiblePreLoader: false,
             loop: false,
             position: 0,
+            visible: false,
             playStatus: Sound.status.STOPPED
         }
     }
@@ -50,8 +51,12 @@ class App extends Component {
         this.props.authActions.authGetInfo();
     }
 
+    visibleBar(){
+        this.setState({visible: !this.state.visible})
+    }
+
     render() {
-      const {playStatus,loop} = this.state;
+      const {playStatus,loop,visible} = this.state;
       const {visibleRouteLine,auth} = this.props;
 
     return (
@@ -64,12 +69,14 @@ class App extends Component {
                         <PrivateRouteCounter path='/counter' component={Counter}/>
                         <PrivateRouteCounter path='/gameArea' component={GameArea}/>
                     </Switch>
+                    {visibleRouteLine && auth && <IconBurgerMenu onClick={()=>this.visibleBar()} fontSize='40px' iconType="sort" classType="material-icons"></IconBurgerMenu>}
                     {
                         visibleRouteLine && auth ?
-                            <AppContainer>
-                                <BlurRouteButton iconType="home" classType="material-icons" to='/' description='Главная' fontSize='54px' padding="80px"></BlurRouteButton>
-                                <BlurRouteButton iconType='theaters' classType="material-icons" to='/aboutUs' description='Об игре' fontSize='54px' padding="80px"></BlurRouteButton>
-                                <BlurRouteButton iconType='add' classType="material-icons" to='/counter' description='Правила игры' fontSize='54px' padding="80px"></BlurRouteButton>
+                            <AppContainer visible={visible ? 1 : 0}>
+                                <IconCloseMenu visible={visible ? 1 : 0} onClick={()=>this.visibleBar()} fontSize='40px' iconType="clear" classType="material-icons"></IconCloseMenu>
+                                    <BlurRouteButton onClick={()=>visible && this.visibleBar()} iconType="home" classType="material-icons" to='/' description='Главная' fontSize='54px' padding="80px"></BlurRouteButton>
+                                    <BlurRouteButton onClick={()=>visible && this.visibleBar()} iconType='theaters' classType="material-icons" to='/aboutUs' description='Об игре' fontSize='54px' padding="80px"></BlurRouteButton>
+                                    <BlurRouteButton onClick={()=>visible && this.visibleBar()} iconType='person' classType="material-icons" to='/counter' description='Пользователи' fontSize='54px' padding="80px"></BlurRouteButton>
                             </AppContainer> : null
                     }
                 </main>

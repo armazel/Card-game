@@ -5,9 +5,9 @@ import style from 'styled-components'
 class IconBlock extends React.Component {
 
     render() {
-        const { className, iconType, classType, fontSize } = this.props;
+        const { className, iconType, classType, fontSize, onClick } = this.props;
         return (classType) ?
-            <i className={className + ' ' + classType}>{iconType}</i> : '';
+            <i onClick={onClick} className={className + ' ' + classType}>{iconType}</i> : '';
     }
 }
 
@@ -30,4 +30,39 @@ opacity: 0.5;
     cursor: pointer;
     fill: rebeccapurple;
 }
+@media(max-width: 1380px) {
+    font-size: 32px;
+  }
+  @media(max-width: 1024px) {
+    font-size: 54px;
+  }
+`
+
+
+export const IconBurgerMenu = IconNode.extend`
+  display: none;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  @media(max-width: 1024px) {
+    font-size: 32px;
+    display: ${({ visible }) => (!visible ? 'flex' : 'none')};
+  }
+`
+
+export const IconCloseMenu = IconNode.extend.attrs({
+    visible: props => props.visible
+})`
+  display: none;
+  position: absolute;
+  cursor: pointer;
+  @media(max-width: 1024px) {
+    font-size: 54px;
+   display: ${({ visible }) => (visible ? 'flex' : 'none')};
+   position: absolute;
+   top: 10px;
+   right: 10px;
+   z-index: 15;
+  }
 `

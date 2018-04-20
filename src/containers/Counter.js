@@ -79,8 +79,6 @@ class Counter extends Component {
         );
 
 
-    isRowLoaded = ({ index }: { index: number }) => !!this.state.data[index]
-
 
     render() {
         const { data } = this.state;
@@ -89,6 +87,7 @@ class Counter extends Component {
         return (
             <WrapperContainer>
                 <WrapperInfoContent width='350px'>
+                    <CounterText width='100%' fontSize='54px'>Наши игроки</CounterText>
                     <AutoSizer>
                         {
                             ({width,height}) =>{
@@ -102,7 +101,7 @@ class Counter extends Component {
                                         overscanRowCount={5}
                                         scrollToAlignment='start'
                                         rowRenderer={this.renderRow}
-                                    ></List>
+                                    />
                                 )
                             }
                         }

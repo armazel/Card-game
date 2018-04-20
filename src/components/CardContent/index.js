@@ -13,10 +13,18 @@ import generateData from "../../utils/generateData";
 const styles = {
     card: {
         width:350,
-        maxHeight:450
+        maxHeight:450,
+        borderRadius: 10
     },
     text: {
-        maxHeight:280,
+        maxHeight:35,
+        whiteSpace: 'nowrap',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis'
+    },
+
+    name: {
+        maxHeight:80,
         whiteSpace: 'nowrap',
         overflow: 'hidden',
         textOverflow: 'ellipsis'
@@ -31,7 +39,7 @@ const styles = {
 
 class CardContentBlock extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
 
         this.state = {
@@ -70,7 +78,7 @@ class CardContentBlock extends Component {
                         title={amount  + ' $'}
                     />
                     <CardContent>
-                        <Typography gutterBottom variant="headline" component="h2">
+                        <Typography className={classes.name} gutterBottom variant="headline" component="h2">
                             Имя: {name}
                         </Typography>
                         <Typography component="p">

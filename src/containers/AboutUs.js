@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux'
 import {Link} from 'react-router-dom'
 import {BlurButton} from "../components/styled/buttons";
 import {CounterContainer,CounterButton, CounterText} from "../components/styled/counterPage";
-import {WrapperContainer,CentralContainer} from "../components/styled/appBlock";
+import {WrapperContainer,CentralContainer,WrapperBlockVideo} from "../components/styled/appBlock";
 import {Header,List,ListItem} from "../components/styled/titleHeaders";
 import * as aboutUsActions from '../actions/aboutUsActions'
 import * as loaderActions from '../actions/loaderActions'
@@ -57,14 +57,17 @@ class AboutUs extends Component {
 
                 <CounterContainer>
                     <WrapperContainer>
-                        <CentralContainer>
-                            <Header margin='0 0 50px 0' fontSize='56px'>Об игре</Header>
+                        <CentralContainer margin='60px 0 0 0'>
+                            <Header  fontSize='56px'>Об игре</Header>
                             <CounterContainer>
                                 <CounterText fontSize='24px'>Интересная игра для оттачивания навыков и дальнейшем развитии во вселенной Гвинт</CounterText>
                                 <CounterText fontSize='24px'>С уважением, команда разработчиков)</CounterText>
                             </CounterContainer>
 
-                            <iframe width="1280" height="640" src="https://www.youtube.com/embed/QKwJq_odG70"></iframe>
+                            <WrapperBlockVideo>
+                                <iframe width="70%" src="https://www.youtube.com/embed/QKwJq_odG70"></iframe>
+                            </WrapperBlockVideo>
+
                         </CentralContainer>
                     </WrapperContainer>
 
