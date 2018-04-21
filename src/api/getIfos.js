@@ -4,7 +4,6 @@ const URL = "http://demo4522838.mockable.io/users"
 
 
 export const getSometing = ()=>{
-    debugger;
     return axios.get('http://localhost:5000/api/todo/1')
         .then((response) => {
             debugger;
