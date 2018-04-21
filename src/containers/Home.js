@@ -75,12 +75,12 @@ class Home extends Component {
 
         return (
             <WrapperContainer>
-                <Header>Welcome to home! {storage.login.length ? storage.login : 'New user'}</Header>
+                <Header>Welcome to home! {storage.login ? storage.login : 'New user'}</Header>
                 {
-                    storage.login.length ? <BlurButton width='10%' fontSize='24px' padding="30px" onClick={(e) => this.onLogout()}>Разлогиниться</BlurButton> : null
+                    storage.login ? <BlurButton width='10%' fontSize='24px' padding="30px" onClick={(e) => this.onLogout()}>Разлогиниться</BlurButton> : null
                 }
                 {
-                    !showComponent && !storage.login.length ?
+                    !showComponent && !storage.login ?
                     <BlurButton width='10%' fontSize='24px' padding="30px" onClick={(e) => this.onMouseClick()}>Войти</BlurButton> : null
 
                 }
