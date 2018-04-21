@@ -18,6 +18,7 @@ import {List,AutoSizer} from 'react-virtualized'
 
 
 const mapStateToProps = (state) => {
+
     return {
         counterInfo: state.counter.counterInfo,
         userInfo: state.users.usersData

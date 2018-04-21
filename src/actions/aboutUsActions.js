@@ -7,7 +7,7 @@ export function getUsers() {
     return {
        type: actionsType.GET_USERS,
        payload:{
-           users:''
+           users: getSometing()
        }
    };
 

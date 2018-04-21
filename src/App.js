@@ -86,7 +86,7 @@ class App extends Component {
                 auth ?
                     <WrapperEmptyContainer>
                         <Sound
-                            url="https://psv4.vkuseraudio.net/c422130/u230012738/audios/c0dd05a22bcd.mp3?"
+                            url="https://cs9-7v4.vkuseraudio.net/p18/87718568dab6bb.mp3"
                             playStatus={this.state.playStatus}
                             loop={loop}
                             playFromPosition={this.state.position}
