@@ -12,7 +12,7 @@ const generateData = (count) =>{
             email: faker.internet.email(),
             imageUrl: faker.internet.avatar(),
             amountCount: faker.finance.amount(),
-            id: faker.address.zipCode(),
+            id: faker.random.number(),
             text: faker.lorem.paragraph()
         });
     }
