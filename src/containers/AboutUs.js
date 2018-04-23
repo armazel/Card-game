@@ -4,12 +4,15 @@ import {Link} from 'react-router-dom'
 import {BlurButton} from "../components/styled/buttons";
 import {CounterContainer,CounterButton, CounterText} from "../components/styled/counterPage";
 import {WrapperContainer,CentralContainer,WrapperBlockVideo} from "../components/styled/appBlock";
-import {Header,List,ListItem} from "../components/styled/titleHeaders";
+import {Header,ListItem} from "../components/styled/titleHeaders";
 import * as aboutUsActions from '../actions/aboutUsActions'
 import * as loaderActions from '../actions/loaderActions'
 import {connect} from "react-redux";
 import { RingLoader } from 'react-spinners';
 import storage from "../utils/storage";
+import {List,AutoSizer,Grid} from 'react-virtualized';
+import generateData from '../utils/generateData';
+import TableContentBlock from '../components/TableContent/index'
 
 
 const mapStateToProps = (state) => {
@@ -41,7 +44,8 @@ class AboutUs extends Component {
         super(props);
         this.onGetUsers = this.onGetUsers.bind(this);
         this.state = {
-            usersData: null
+            usersData: null,
+            data: generateData(1000)
         }
     }
 
@@ -49,9 +53,17 @@ class AboutUs extends Component {
         this.props.aboutUsActions.getUsers()
     }
 
+    /*renderTableRow = ({index,isScrolling,key,style}) =>
+
+        (
+            <TableContentBlock key={key} style={style}
+                              data={this.state.data}/>
+        );
+*/
 
     render() {
         const {users,loaderActive,total} = this.props;
+        const {data} = this.state;
         return (
             <div>
 
@@ -65,7 +77,7 @@ class AboutUs extends Component {
                             </CounterContainer>
 
                             <WrapperBlockVideo>
-                                <iframe width="70%" src="https://www.youtube.com/embed/QKwJq_odG70"></iframe>
+                                <TableContentBlock data={this.state.data}/>
                             </WrapperBlockVideo>
 
                         </CentralContainer>

@@ -13,7 +13,7 @@ import generateData from '../utils/generateData';
 
 import CardContentBlock from '../components/CardContent/index'
 
-import {List,AutoSizer} from 'react-virtualized'
+import {List,AutoSizer,Grid} from 'react-virtualized'
 
 
 
@@ -42,6 +42,11 @@ const DroggableList = ({ line,index }) => {
         line ?  <ListItem fontSize="18px">{line.label}</ListItem> : null
     )
 };
+
+const listData = [
+    ['Brian Vaughn', 'Software Engineer', 'San Jose', 'CA', 95125]
+];
+
 
 
 class Counter extends Component {
@@ -80,6 +85,16 @@ class Counter extends Component {
         );
 
 
+    cellRender =({columnIndex,key,rowIndex,style}) => (
+        <div
+            key={key}
+            style={style}
+            >
+            {listData[rowIndex][columnIndex]}
+        </div>
+    )
+
+
 
     render() {
         const { data } = this.state;
@@ -89,6 +104,7 @@ class Counter extends Component {
             <WrapperContainer>
                 <WrapperInfoContent width='350px'>
                     <CounterText width='100%' fontSize='54px'>Наши игроки</CounterText>
+
                     <AutoSizer>
                         {
                             ({width,height}) =>{
@@ -107,6 +123,18 @@ class Counter extends Component {
                             }
                         }
                     </AutoSizer>
+
+                   {/* <Grid
+                        cellRenderer={this.cellRender}
+                        columnCount={5}
+                        columnWidth={100}
+                        height={300}
+                        rowCount={5}
+                        rowHeight={30}
+                        width={300}
+                    />*/}
+
+
                 </WrapperInfoContent>
             </WrapperContainer>
 
