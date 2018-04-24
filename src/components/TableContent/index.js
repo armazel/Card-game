@@ -28,7 +28,7 @@ class EnhancedTableHead extends React.Component {
     render() {
         const { onSelectAllClick, order, orderBy, numSelected, rowCount, style, data, classes } = this.props;
         return (
-            <TableHead>
+            <TableHead style={style}>
                 <TableRow>
                     <TableCell padding="checkbox">
                         <Checkbox
@@ -40,7 +40,7 @@ class EnhancedTableHead extends React.Component {
                     {data.map(column => {
                         return (
                             <TableCell
-                                key={column.id}
+                                key={column.amountCount + column.id}
                                 numeric={column.numeric}
                                 padding={column.disablePadding ? 'none' : 'default'}
                                 sortDirection={orderBy === column.id ? order : false}
@@ -91,7 +91,7 @@ const toolbarStyles = theme => ({
                 backgroundColor: theme.palette.secondary.dark,
             },
     spacer: {
-        flex: '1 1 100%',
+        //flex: '1 1 100%',
     },
     actions: {
         color: theme.palette.text.secondary,
@@ -100,6 +100,8 @@ const toolbarStyles = theme => ({
         flex: '0 0 auto',
     },
 });
+
+
 
 let EnhancedTableToolbar = props => {
     const { numSelected, classes } = props;
@@ -116,7 +118,7 @@ let EnhancedTableToolbar = props => {
                         {numSelected} selected
                     </Typography>
                 ) : (
-                    <Typography variant="title">Nutrition</Typography>
+                    <Typography variant="title">Таблица</Typography>
                 )}
             </div>
             <div className={classes.spacer} />
@@ -152,7 +154,7 @@ const styles = theme => ({
         marginTop: theme.spacing.unit * 3,
     },
     table: {
-        minWidth: 1020,
+        maxWidth: 1020,
     },
     tableWrapper: {
         overflowX: 'auto',
@@ -165,7 +167,7 @@ class TableContentBlock extends React.Component {
 
         this.state = {
             order: 'asc',
-            orderBy: 'calories',
+            orderBy: 'amountCount',
             selected: [],
             page: 0,
             rowsPerPage: 5,
@@ -173,6 +175,7 @@ class TableContentBlock extends React.Component {
     }
 
     handleRequestSort = (event, property) => {
+
         const orderBy = property;
         let order = 'desc';
 
@@ -182,15 +185,15 @@ class TableContentBlock extends React.Component {
 
         const data =
             order === 'desc'
-                ? this.state.data.sort((a, b) => (b[orderBy] < a[orderBy] ? -1 : 1))
-                : this.state.data.sort((a, b) => (a[orderBy] < b[orderBy] ? -1 : 1));
+                ? this.props.data.sort((a, b) => (b[orderBy] < a[orderBy] ? -1 : 1))
+                : this.props.data.sort((a, b) => (a[orderBy] < b[orderBy] ? -1 : 1));
 
         this.setState({ data, order, orderBy });
     };
 
     handleSelectAllClick = (event, checked) => {
         if (checked) {
-            this.setState({ selected: this.state.data.map(n => n.id) });
+            this.setState({ selected: this.props.data.map(n => n.id) });
             return;
         }
         this.setState({ selected: [] });
@@ -217,7 +220,7 @@ class TableContentBlock extends React.Component {
         this.setState({ selected: newSelected });
     };
 
-    handleChangePage = (event, page) => {
+    handleChangePage = (event, page, tr) => {
         this.setState({ page });
     };
 
@@ -233,11 +236,11 @@ class TableContentBlock extends React.Component {
         const emptyRows = rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage);
 
         return (
-            <Paper className={classes.root}>
+            <Paper className={classes.root}>s
                 <EnhancedTableToolbar numSelected={selected.length} />
                 <div className={classes.tableWrapper}>
-                    <Table className={classes.table}>
-                        <EnhancedTableHead
+                    <Table>
+                        {/*<EnhancedTableHead
                             data={data}
                             numSelected={selected.length}
                             order={order}
@@ -245,7 +248,7 @@ class TableContentBlock extends React.Component {
                             onSelectAllClick={this.handleSelectAllClick}
                             onRequestSort={this.handleRequestSort}
                             rowCount={data.length}
-                        />
+                        />*/}
                         <TableBody>
                             {data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(n => {
                                 const isSelected = this.isSelected(n.id);
@@ -256,22 +259,21 @@ class TableContentBlock extends React.Component {
                                         role="checkbox"
                                         aria-checked={isSelected}
                                         tabIndex={-1}
-                                        key={n.id}
+                                        key={n.amountCount}
                                         selected={isSelected}
                                     >
-                                        <TableCell padding="checkbox">
+                                        <TableCell style={{ width: 300 }}>
                                             <Checkbox checked={isSelected} />
                                         </TableCell>
-                                        <TableCell padding="none">{n.name}</TableCell>
-                                        <TableCell numeric>{n.email}</TableCell>
-                                        <TableCell numeric>{n.amountCount}</TableCell>
-                                        <TableCell numeric>{n.text}</TableCell>
-                                        <TableCell numeric>{n.id}</TableCell>
+                                        <TableCell style={{ width: 300 }}>{n.name}</TableCell>
+                                        <TableCell style={{ width: 300 }}>{n.email}</TableCell>
+                                        <TableCell style={{ width: 300 }}>{n.amountCount + '$'}</TableCell>
+                                        <TableCell style={{ width: 300 }}>{n.id}</TableCell>
                                     </TableRow>
                                 );
                             })}
                             {emptyRows > 0 && (
-                                <TableRow style={{ height: 49 * emptyRows }}>
+                                <TableRow style={{ height: 49}}>
                                     <TableCell colSpan={6} />
                                 </TableRow>
                             )}

@@ -45,7 +45,7 @@ class AboutUs extends Component {
         this.onGetUsers = this.onGetUsers.bind(this);
         this.state = {
             usersData: null,
-            data: generateData(1000)
+            data: generateData(100)
         }
     }
 
@@ -76,9 +76,7 @@ class AboutUs extends Component {
                                 <CounterText fontSize='24px'>С уважением, команда разработчиков)</CounterText>
                             </CounterContainer>
 
-                            <WrapperBlockVideo>
-                                <TableContentBlock data={this.state.data}/>
-                            </WrapperBlockVideo>
+                            <TableContentBlock data={this.state.data}/>
 
                         </CentralContainer>
                     </WrapperContainer>

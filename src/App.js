@@ -3,6 +3,7 @@ import { BrowserRouter as Router,Switch, Route,Link, Redirect, withRouter } from
 import './App.css';
 import Home from './containers/Home'
 import Counter from './containers/Counter'
+import TestPage from './containers/TestPage'
 import GameArea from './containers/GameArea'
 import AboutUs from './containers/AboutUs'
 import {BlurRouteButton} from './components/styled/buttons'
@@ -68,6 +69,7 @@ class App extends Component {
                         <PrivateRouteAboutUs path='/aboutUs' component={AboutUs}/>
                         <PrivateRouteCounter path='/counter' component={Counter}/>
                         <PrivateRouteCounter path='/gameArea' component={GameArea}/>
+                        <PrivateRouteCounter path='/testPage' component={TestPage}/>
                     </Switch>
                     {visibleRouteLine && auth && <IconBurgerMenu onClick={()=>this.visibleBar()} fontSize='40px' iconType="sort" classType="material-icons"></IconBurgerMenu>}
                     {
